@@ -78,22 +78,6 @@ $(document).ready(function () {
           errorMessage: 'Price cannot exceed $10,000'
         }
       ])
-      .addField('#productDescription', [
-        {
-          rule: 'required',
-          errorMessage: 'Description is required'
-        },
-        {
-          rule: 'minLength',
-          value: 10,
-          errorMessage: 'Description must be at least 10 characters'
-        },
-        {
-          rule: 'maxLength',
-          value: 200,
-          errorMessage: 'Description must be less than 200 characters'
-        }
-      ])
       .addField('#productImage', [
         {
           rule: 'required',
@@ -193,7 +177,6 @@ $(document).ready(function () {
   function saveProduct() {
     const name = $('#productName').val().trim();
     const price = parseFloat($('#productPrice').val());
-    const description = $('#productDescription').val().trim();
     const imageFile = $('#productImage')[0].files[0];
     
     // Show loading state
@@ -205,7 +188,6 @@ $(document).ready(function () {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('price', price);
-    formData.append('description', description);
     formData.append('image', imageFile);
     
     // Send request

@@ -115,7 +115,7 @@ $products = $productModel->all();
                         </div>
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold"><?php echo htmlspecialchars($product['name']) ?></h5>
-                            <p class="card-text text-muted flex-grow-1"><?php echo htmlspecialchars($product['description']) ?></p>
+                            <p class="card-text text-muted flex-grow-1">Product ID: <?php echo $product['id'] ?></p>
                             <div class="d-flex justify-content-between align-items-center mt-auto">
                                 <span class="h4 text-primary mb-0 fw-bold">$<?php echo number_format($product['price'], 2) ?></span>
                                 <div class="btn-group" role="group">
@@ -180,10 +180,6 @@ $products = $productModel->all();
                                     required>
                                 <div class="invalid-feedback" id="priceError"></div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="productDescription" class="form-label">Description</label>
-                            <textarea class="form-control" id="productDescription" rows="3" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="productImage" class="form-label">Product Image</label>

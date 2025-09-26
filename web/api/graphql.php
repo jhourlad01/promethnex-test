@@ -40,7 +40,6 @@ try {
                         'id' => (int)$product['id'],
                         'name' => $product['name'],
                         'price' => (float)$product['price'],
-                        'description' => $product['description'] ?? null,
                         'image' => $product['image'] ?? null
                     ];
                 }, $products)

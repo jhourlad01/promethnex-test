@@ -28,14 +28,9 @@ try {
         throw new Exception('Product image is required');
     }
     
-    if (empty($_POST['description']) || strlen(trim($_POST['description'])) < 10) {
-        throw new Exception('Description is required and must be at least 10 characters');
-    }
-    
     // Sanitize input
     $name = trim($_POST['name']);
     $price = floatval($_POST['price']);
-    $description = trim($_POST['description']);
     $imageFile = $_FILES['image'];
     
     // Validate image file
@@ -67,7 +62,6 @@ try {
     $productData = [
         'name' => $name,
         'price' => $price,
-        'description' => $description,
         'image' => $fileName
     ];
     
