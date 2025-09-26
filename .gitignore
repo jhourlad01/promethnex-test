@@ -77,3 +77,6 @@ composer.lock
 # Linting
 .eslintcache
 .php-cs-fixer.cache
+
+# Analysis screenshots
+web/scripts/playwright/screenshots/

@@ -601,7 +601,7 @@ function generateHTMLReport(report) {
                                 <div style="margin: 5px 0; padding: 5px; background: white; border-radius: 3px; border-left: 3px solid ${issue.severity === 'critical' ? '#dc3545' : issue.severity === 'high' ? '#fd7e14' : issue.severity === 'medium' ? '#ffc107' : '#28a745'};">
                                     <strong>${issue.type}:</strong> ${issue.message}
                                     ${issue.explanation ? `<br><em>${issue.explanation}</em>` : ''}
-                                    ${issue.recommendation ? `<br><small style="color: #6c757d;">💡 ${issue.recommendation}</small>` : ''}
+                                    ${issue.recommendation ? `<br><small style="color: #6c757d;">Recommendation: ${issue.recommendation}</small>` : ''}
                                 </div>
                             `).join('')}
                         </div>
