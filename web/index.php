@@ -5,6 +5,8 @@ require_once 'models/Product.php';
 
 // Get products from database
 $productModel = new \App\Models\Product($pdo);
+
+// Get all products
 $products = $productModel->all();
 ?>
 <!DOCTYPE html>
@@ -52,6 +54,7 @@ $products = $productModel->all();
                         Browse and manage your product inventory with our simple and intuitive catalog system.
                         Built with REST API and GraphQL support.
                     </p>
+                    
                     <div class="d-flex justify-content-center gap-3">
                         <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#addProductModal">
                             <i class="bi bi-plus-circle me-2"></i>Add New Product
@@ -71,11 +74,8 @@ $products = $productModel->all();
                         <span class="input-group-text">
                             <i class="bi bi-search"></i>
                         </span>
-                        <input type="text" class="form-control" id="searchInput"
+                        <input type="text" class="form-control" id="filterProducts"
                             placeholder="Search products by name...">
-                        <button class="btn btn-outline-secondary" type="button" id="searchBtn">
-                            Search
-                        </button>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -113,11 +113,10 @@ $products = $productModel->all();
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="position-relative">
-                            <img src="assets/images/products/<?php echo strtolower(str_replace(' ', '-', $product['name'])) ?>.jpg" 
+                            <img src="assets/images/products/<?php echo strtolower(str_replace([' ', '"'], ['-', ''], $product['name'])) ?>.jpg" 
                                  class="card-img-top" 
                                  alt="<?php echo htmlspecialchars($product['name']) ?>" 
-                                 style="height: 250px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
+                                 style="height: 250px; object-fit: cover;">
                             <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: <?php echo $product['id'] ?></span>
                         </div>
                         <div class="card-body d-flex flex-column">
