@@ -1,0 +1,185 @@
+{
+  "generated": "2025-09-26T09:10:16.858Z",
+  "totalScreenshots": 8,
+  "aiAnalyzed": 0,
+  "totalIssues": 6,
+  "analyses": [
+    {
+      "filename": "add-product-modal-desktop-1758877747612.png",
+      "timestamp": "2025-09-26T09:09:19.409Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [
+        {
+          "type": "functionality",
+          "message": "Modal interface detected - verify proper modal behavior",
+          "explanation": "This screenshot shows a modal dialog. Manual testing is required to ensure the modal opens, closes, and functions correctly across different devices.",
+          "confidence": "low",
+          "severity": "low",
+          "recommendation": "Test modal functionality including keyboard navigation (ESC to close), focus management, and proper backdrop behavior."
+        }
+      ],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    },
+    {
+      "filename": "add-product-modal-large-desktop-1758877752207.png",
+      "timestamp": "2025-09-26T09:09:27.331Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [
+        {
+          "type": "functionality",
+          "message": "Modal interface detected - verify proper modal behavior",
+          "explanation": "This screenshot shows a modal dialog. Manual testing is required to ensure the modal opens, closes, and functions correctly across different devices.",
+          "confidence": "low",
+          "severity": "low",
+          "recommendation": "Test modal functionality including keyboard navigation (ESC to close), focus management, and proper backdrop behavior."
+        }
+      ],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    },
+    {
+      "filename": "add-product-modal-mobile-1758877737289.png",
+      "timestamp": "2025-09-26T09:09:35.712Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [
+        {
+          "type": "accessibility",
+          "message": "Mobile viewport detected - verify responsive design",
+          "explanation": "This screenshot was taken on a mobile viewport. Manual verification is needed to ensure the interface is properly responsive and usable on mobile devices.",
+          "confidence": "low",
+          "severity": "low",
+          "recommendation": "Test the interface on actual mobile devices and verify touch targets are appropriately sized (minimum 44px)."
+        },
+        {
+          "type": "functionality",
+          "message": "Modal interface detected - verify proper modal behavior",
+          "explanation": "This screenshot shows a modal dialog. Manual testing is required to ensure the modal opens, closes, and functions correctly across different devices.",
+          "confidence": "low",
+          "severity": "low",
+          "recommendation": "Test modal functionality including keyboard navigation (ESC to close), focus management, and proper backdrop behavior."
+        }
+      ],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    },
+    {
+      "filename": "add-product-modal-tablet-1758877742288.png",
+      "timestamp": "2025-09-26T09:09:44.198Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [
+        {
+          "type": "functionality",
+          "message": "Modal interface detected - verify proper modal behavior",
+          "explanation": "This screenshot shows a modal dialog. Manual testing is required to ensure the modal opens, closes, and functions correctly across different devices.",
+          "confidence": "low",
+          "severity": "low",
+          "recommendation": "Test modal functionality including keyboard navigation (ESC to close), focus management, and proper backdrop behavior."
+        }
+      ],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    },
+    {
+      "filename": "home-desktop-1758877728584.png",
+      "timestamp": "2025-09-26T09:09:52.146Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    },
+    {
+      "filename": "home-large-desktop-1758877732385.png",
+      "timestamp": "2025-09-26T09:09:59.724Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    },
+    {
+      "filename": "home-mobile-1758877720114.png",
+      "timestamp": "2025-09-26T09:10:08.130Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [
+        {
+          "type": "accessibility",
+          "message": "Mobile viewport detected - verify responsive design",
+          "explanation": "This screenshot was taken on a mobile viewport. Manual verification is needed to ensure the interface is properly responsive and usable on mobile devices.",
+          "confidence": "low",
+          "severity": "low",
+          "recommendation": "Test the interface on actual mobile devices and verify touch targets are appropriately sized (minimum 44px)."
+        }
+      ],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    },
+    {
+      "filename": "home-tablet-1758877724435.png",
+      "timestamp": "2025-09-26T09:10:16.858Z",
+      "aiGenerated": false,
+      "description": "AI analysis unavailable - using fallback analysis",
+      "confidence": 0,
+      "issues": [],
+      "suggestions": [
+        "AI analysis failed due to connectivity or model availability issues"
+      ]
+    }
+  ],
+  "issuesByType": {
+    "functionality": [
+      {
+        "filename": "add-product-modal-desktop-1758877747612.png",
+        "message": "Modal interface detected - verify proper modal behavior",
+        "confidence": "low"
+      },
+      {
+        "filename": "add-product-modal-large-desktop-1758877752207.png",
+        "message": "Modal interface detected - verify proper modal behavior",
+        "confidence": "low"
+      },
+      {
+        "filename": "add-product-modal-mobile-1758877737289.png",
+        "message": "Modal interface detected - verify proper modal behavior",
+        "confidence": "low"
+      },
+      {
+        "filename": "add-product-modal-tablet-1758877742288.png",
+        "message": "Modal interface detected - verify proper modal behavior",
+        "confidence": "low"
+      }
+    ],
+    "accessibility": [
+      {
+        "filename": "add-product-modal-mobile-1758877737289.png",
+        "message": "Mobile viewport detected - verify responsive design",
+        "confidence": "low"
+      },
+      {
+        "filename": "home-mobile-1758877720114.png",
+        "message": "Mobile viewport detected - verify responsive design",
+        "confidence": "low"
+      }
+    ]
+  }
+}

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Analysis Report</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f5f5f5; 
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .header { 
+            background: #2c3e50; 
+            color: white; 
+            padding: 30px; 
+            border-radius: 8px 8px 0 0; 
+        }
+        .header h1 { 
+            margin: 0; 
+            font-size: 2em; 
+        }
+        .header p { 
+            margin: 10px 0 0 0; 
+            opacity: 0.8; 
+        }
+        .content { 
+            padding: 30px; 
+        }
+        .stats { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 30px; 
+        }
+        .stat-card { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            border-radius: 6px; 
+            text-align: center; 
+        }
+        .stat-number { 
+            font-size: 2em; 
+            font-weight: bold; 
+            color: #2c3e50; 
+        }
+        .stat-label { 
+            color: #6c757d; 
+            margin-top: 5px; 
+        }
+        .section { 
+            margin-bottom: 30px; 
+        }
+        .section h2 { 
+            color: #2c3e50; 
+            border-bottom: 2px solid #e9ecef; 
+            padding-bottom: 10px; 
+        }
+        .issues { 
+            background: #fff3cd; 
+            border: 1px solid #ffeaa7; 
+            border-radius: 6px; 
+            padding: 20px; 
+        }
+        .issue-type { 
+            margin-bottom: 20px; 
+        }
+        .issue-type h3 { 
+            color: #856404; 
+            margin-bottom: 10px; 
+        }
+        .issue-item { 
+            background: white; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 4px; 
+            border-left: 4px solid #ffc107; 
+        }
+        .issue-item.critical { border-left-color: #dc3545; }
+        .issue-item.high { border-left-color: #fd7e14; }
+        .issue-item.medium { border-left-color: #ffc107; }
+        .issue-item.low { border-left-color: #28a745; }
+        .issue-title { 
+            font-weight: bold; 
+            margin-bottom: 8px; 
+            color: #2c3e50;
+        }
+        .issue-explanation { 
+            color: #495057; 
+            margin-bottom: 8px; 
+            font-style: italic;
+        }
+        .issue-recommendation { 
+            color: #6c757d; 
+            font-size: 0.9em; 
+            background: #f8f9fa; 
+            padding: 8px; 
+            border-radius: 4px; 
+            margin-top: 8px;
+        }
+        .issue-meta { 
+            font-size: 0.8em; 
+            color: #6c757d; 
+            margin-top: 5px;
+        }
+        .screenshots { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+            gap: 25px; 
+        }
+        .screenshot-item { 
+            text-align: center; 
+            background: #f8f9fa; 
+            border-radius: 8px; 
+            padding: 20px; 
+            border: 2px solid #e9ecef;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .screenshot-item:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            border-color: #007bff;
+        }
+        .screenshot-item img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 6px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #dee2e6;
+        }
+        .screenshot-info { 
+            margin-top: 15px; 
+            font-size: 0.9em; 
+            color: #495057;
+        }
+        .screenshot-title { 
+            font-weight: bold; 
+            color: #2c3e50; 
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        .screenshot-meta { 
+            color: #6c757d; 
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+        .screenshot-description { 
+            color: #495057; 
+            font-style: italic;
+            margin-top: 8px;
+        }
+        .no-issues { 
+            background: #d4edda; 
+            border: 1px solid #c3e6cb; 
+            color: #155724; 
+            padding: 20px; 
+            border-radius: 6px; 
+            text-align: center; 
+        }
+        .footer { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            text-align: center; 
+            color: #6c757d; 
+            border-radius: 0 0 8px 8px; 
+        }
+        .severity-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .severity-critical { background: #dc3545; color: white; }
+        .severity-high { background: #fd7e14; color: white; }
+        .severity-medium { background: #ffc107; color: #212529; }
+        .severity-low { background: #28a745; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Visual Analysis Report</h1>
+            <p>Generated on 9/26/2025, 5:10:16 PM</p>
+        </div>
+        
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Screenshots</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">AI Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Issues Found</div>
+                </div>
+            </div>
+            
+            
+                <div class="section">
+                    <h2>Issues Found</h2>
+                    <div class="issues">
+                        
+                            <div class="issue-type">
+                                <h3>FUNCTIONALITY (4)</h3>
+                                
+                                    <div class="issue-item medium">
+                                        <div class="issue-title">
+                                            <strong>add-product-modal-desktop-1758877747612.png</strong>: Modal interface detected - verify proper modal behavior
+                                            <span class="severity-badge severity-medium">medium</span>
+                                        </div>
+                                        
+                                        
+                                        <div class="issue-meta">
+                                            Confidence: low | File: add-product-modal-desktop-1758877747612.png
+                                        </div>
+                                    </div>
+                                
+                                    <div class="issue-item medium">
+                                        <div class="issue-title">
+                                            <strong>add-product-modal-large-desktop-1758877752207.png</strong>: Modal interface detected - verify proper modal behavior
+                                            <span class="severity-badge severity-medium">medium</span>
+                                        </div>
+                                        
+                                        
+                                        <div class="issue-meta">
+                                            Confidence: low | File: add-product-modal-large-desktop-1758877752207.png
+                                        </div>
+                                    </div>
+                                
+                                    <div class="issue-item medium">
+                                        <div class="issue-title">
+                                            <strong>add-product-modal-mobile-1758877737289.png</strong>: Modal interface detected - verify proper modal behavior
+                                            <span class="severity-badge severity-medium">medium</span>
+                                        </div>
+                                        
+                                        
+                                        <div class="issue-meta">
+                                            Confidence: low | File: add-product-modal-mobile-1758877737289.png
+                                        </div>
+                                    </div>
+                                
+                                    <div class="issue-item medium">
+                                        <div class="issue-title">
+                                            <strong>add-product-modal-tablet-1758877742288.png</strong>: Modal interface detected - verify proper modal behavior
+                                            <span class="severity-badge severity-medium">medium</span>
+                                        </div>
+                                        
+                                        
+                                        <div class="issue-meta">
+                                            Confidence: low | File: add-product-modal-tablet-1758877742288.png
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        
+                            <div class="issue-type">
+                                <h3>ACCESSIBILITY (2)</h3>
+                                
+                                    <div class="issue-item medium">
+                                        <div class="issue-title">
+                                            <strong>add-product-modal-mobile-1758877737289.png</strong>: Mobile viewport detected - verify responsive design
+                                            <span class="severity-badge severity-medium">medium</span>
+                                        </div>
+                                        
+                                        
+                                        <div class="issue-meta">
+                                            Confidence: low | File: add-product-modal-mobile-1758877737289.png
+                                        </div>
+                                    </div>
+                                
+                                    <div class="issue-item medium">
+                                        <div class="issue-title">
+                                            <strong>home-mobile-1758877720114.png</strong>: Mobile viewport detected - verify responsive design
+                                            <span class="severity-badge severity-medium">medium</span>
+                                        </div>
+                                        
+                                        
+                                        <div class="issue-meta">
+                                            Confidence: low | File: home-mobile-1758877720114.png
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        
+                    </div>
+                </div>
+            
+            <div class="section">
+                <h2>Screenshots</h2>
+                <div class="screenshots">
+                    
+                <div class="screenshot-item">
+                    <img src="add-product-modal-desktop-1758877747612.png" alt="add-product-modal-desktop-1758877747612.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Add - Product</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> add-product-modal-desktop-1758877747612.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="add-product-modal-large-desktop-1758877752207.png" alt="add-product-modal-large-desktop-1758877752207.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Add - Product</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> add-product-modal-large-desktop-1758877752207.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="add-product-modal-mobile-1758877737289.png" alt="add-product-modal-mobile-1758877737289.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Add - Product</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> add-product-modal-mobile-1758877737289.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="add-product-modal-tablet-1758877742288.png" alt="add-product-modal-tablet-1758877742288.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Add - Product</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> add-product-modal-tablet-1758877742288.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="home-desktop-1758877728584.png" alt="home-desktop-1758877728584.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Home - Desktop</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> home-desktop-1758877728584.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="home-large-desktop-1758877732385.png" alt="home-large-desktop-1758877732385.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Home - Large</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> home-large-desktop-1758877732385.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="home-mobile-1758877720114.png" alt="home-mobile-1758877720114.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Home - Mobile</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> home-mobile-1758877720114.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="home-tablet-1758877724435.png" alt="home-tablet-1758877724435.png">
+                    <div class="screenshot-info">
+                        <div class="screenshot-title">Home - Tablet</div>
+                        <div class="screenshot-meta">
+                            <strong>File:</strong> home-tablet-1758877724435.png<br>
+                            <strong>Analysis:</strong> Fallback Analysis<br>
+                            <strong>Confidence:</strong> 0.0%
+                        </div>
+                        <div class="screenshot-description">
+                            AI analysis unavailable - using fallback analysis
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Generated by Visual Analysis Tool | Model: nlpconnect/vit-gpt2-image-captioning | API: Hugging Face Transformers</p>
+        </div>
+    </div>
+</body>
+</html>

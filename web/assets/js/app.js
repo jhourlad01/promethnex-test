@@ -1,4 +1,5 @@
 // Product Catalog JavaScript
+/* global JustValidate */
 $(document).ready(function () {
   'use strict';
 
@@ -145,20 +146,22 @@ $(document).ready(function () {
       const cardB = $(b);
       
       switch(sortValue) {
-        case 'name-asc':
-          return cardA.find('.card-title').text().localeCompare(cardB.find('.card-title').text());
-        case 'name-desc':
-          return cardB.find('.card-title').text().localeCompare(cardA.find('.card-title').text());
-        case 'price-asc':
-          const priceA = parseFloat(cardA.find('.h4').text().replace('$', '').replace(',', ''));
-          const priceB = parseFloat(cardB.find('.h4').text().replace('$', '').replace(',', ''));
-          return priceA - priceB;
-        case 'price-desc':
-          const priceA2 = parseFloat(cardA.find('.h4').text().replace('$', '').replace(',', ''));
-          const priceB2 = parseFloat(cardB.find('.h4').text().replace('$', '').replace(',', ''));
-          return priceB2 - priceA2;
-        default:
-          return 0;
+      case 'name-asc':
+        return cardA.find('.card-title').text().localeCompare(cardB.find('.card-title').text());
+      case 'name-desc':
+        return cardB.find('.card-title').text().localeCompare(cardA.find('.card-title').text());
+      case 'price-asc': {
+        const priceA = parseFloat(cardA.find('.h4').text().replace('$', '').replace(',', ''));
+        const priceB = parseFloat(cardB.find('.h4').text().replace('$', '').replace(',', ''));
+        return priceA - priceB;
+      }
+      case 'price-desc': {
+        const priceA2 = parseFloat(cardA.find('.h4').text().replace('$', '').replace(',', ''));
+        const priceB2 = parseFloat(cardB.find('.h4').text().replace('$', '').replace(',', ''));
+        return priceB2 - priceA2;
+      }
+      default:
+        return 0;
       }
     });
     

@@ -1,6 +1,6 @@
-# Product Catalog
+# Product Catalog API
 
-Coding Assessment: Simple E-Commerce Site in PHP and GraphQL
+Coding Assessment: Simple Product Catalog API in PHP
 
 ## Quick Start
 
@@ -12,7 +12,7 @@ start.bat
 ./start.sh
 ```
 
-**Server starts at `http://localhost:8000` with hot reloading**
+**Server starts at `http://localhost:8001` with hot reloading**
 
 ## Setup
 
@@ -28,6 +28,85 @@ npm run seed
 # Creates products table and inserts sample data
 ```
 
+## API Endpoints
+
+### REST API
+
+#### GET /api/products
+Returns a JSON list of products (id, name, price).
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "iPhone 15 Pro",
+    "price": 999.00
+  }
+]
+```
+
+#### POST /api/products
+Accepts JSON input (name, price) and adds it to the list.
+
+**Request:**
+```json
+{
+  "name": "New Product",
+  "price": 99.99
+}
+```
+
+**Response:**
+```json
+{
+  "id": 21,
+  "name": "New Product",
+  "price": 99.99
+}
+```
+
+### GraphQL API (Bonus)
+
+#### POST /api/graphql
+GraphQL endpoint for fetching products.
+
+**Request:**
+```json
+{
+  "query": "{ products { id name price image } }"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "products": [
+      {
+        "id": 1,
+        "name": "iPhone 15 Pro",
+        "price": 999.00,
+        "image": "iphone-15-pro.jpg"
+      }
+    ]
+  }
+}
+```
+
+## Database Schema
+
+```sql
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    image VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
 ## Commands
 
 ```bash
@@ -40,13 +119,52 @@ npm run seed
 # Lint code
 npm run lint
 
-# Format code
-npm run format
+# Visual analysis with AI (generates screenshots + analyzes)
+npm run analyze
 ```
 
 ## Tech Stack
-- **Frontend:** HTML5, Bootstrap 5, jQuery, SCSS
 - **Backend:** PHP
 - **Database:** MySQL
-- **Build Tools:** Sass, BrowserSync
-- **Code Quality:** ESLint, Prettier, PHP CS Fixer
+- **API:** REST + GraphQL
+- **Code Quality:** ESLint, PHP CodeSniffer
+- **AI Analysis:** Hugging Face Vision Models
+- **Visual Testing:** Playwright + Hugging Face Vision
+
+## AI Analysis Configuration
+
+### Hugging Face API Setup
+1. Get your API token from [Hugging Face Settings](https://huggingface.co/settings/tokens)
+2. Create a token with **Read** permissions
+3. Set the environment variable:
+   ```bash
+   set HF_API_KEY=your-token-here
+   ```
+
+### Rate Limiting Configuration
+Configure API call delays and retry behavior to avoid rate limiting:
+
+```bash
+# Delay between API calls (milliseconds)
+set API_DELAY_MS=2000
+
+# Maximum retry attempts for failed requests
+set MAX_RETRIES=3
+
+# Delay for rate limit retries (milliseconds)
+set RATE_LIMIT_DELAY_MS=5000
+```
+
+### Supported Vision Models
+The following models work well with the visual analysis:
+
+**Image Captioning Models:**
+- `nlpconnect/vit-gpt2-image-captioning` (recommended)
+- `Salesforce/blip-image-captioning-base`
+- `microsoft/git-base-coco` (may be deprecated)
+
+**Visual Question Answering:**
+- `dandelin/vilt-b32-finetuned-vqa`
+- `Salesforce/blip-vqa-base`
+
+**Note:** Model availability can change over time. If you get 404 errors, try a different model from the list above.
