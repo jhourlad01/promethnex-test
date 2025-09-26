@@ -30,6 +30,14 @@ $(document).ready(function () {
     $('#saveProduct').on('click', function () {
       saveProduct();
     });
+    
+    $('#sortSelect').on('change', function () {
+      sortProducts();
+    });
+    
+    $('#clearFilters').on('click', function () {
+      clearFilters();
+    });
   }
 
   function loadProducts() {
@@ -76,6 +84,43 @@ $(document).ready(function () {
   
   function hideNoResultsMessage() {
     $('#noResultsMessage').remove();
+  }
+  
+  function sortProducts() {
+    const sortValue = $('#sortSelect').val();
+    const productCards = $('.col-xl-3').toArray();
+    
+    productCards.sort(function(a, b) {
+      const cardA = $(a);
+      const cardB = $(b);
+      
+      switch(sortValue) {
+        case 'name-asc':
+          return cardA.find('.card-title').text().localeCompare(cardB.find('.card-title').text());
+        case 'name-desc':
+          return cardB.find('.card-title').text().localeCompare(cardA.find('.card-title').text());
+        case 'price-asc':
+          const priceA = parseFloat(cardA.find('.h4').text().replace('$', '').replace(',', ''));
+          const priceB = parseFloat(cardB.find('.h4').text().replace('$', '').replace(',', ''));
+          return priceA - priceB;
+        case 'price-desc':
+          const priceA2 = parseFloat(cardA.find('.h4').text().replace('$', '').replace(',', ''));
+          const priceB2 = parseFloat(cardB.find('.h4').text().replace('$', '').replace(',', ''));
+          return priceB2 - priceA2;
+        default:
+          return 0;
+      }
+    });
+    
+    // Re-append sorted cards
+    $('#productsGrid').empty().append(productCards);
+  }
+  
+  function clearFilters() {
+    $('#filterProducts').val('');
+    $('#sortSelect').val('');
+    $('.col-xl-3').show();
+    hideNoResultsMessage();
   }
 
   function saveProduct() {
