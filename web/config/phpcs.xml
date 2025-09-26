@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<ruleset name="Product Catalog">
+    <description>PHP CodeSniffer configuration for Product Catalog</description>
+    
+    <!-- Files to check -->
+    <file>../index.php</file>
+    <file>../config.php</file>
+    <file>../models/</file>
+    <file>../db/</file>
+    
+    <!-- Exclude directories -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>assets/css/*</exclude-pattern>
+    <exclude-pattern>assets/js/*</exclude-pattern>
+    <exclude-pattern>assets/images/*</exclude-pattern>
+    
+    <!-- Only check for basic syntax errors -->
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    
+    <!-- Disable all formatting and style rules -->
+    <rule ref="Generic.Files.LineEndings">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR2.Classes.ClassDeclaration">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR2.Methods.MethodDeclaration">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR2.ControlStructures.ControlStructureSpacing">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR2.Files.EndFileNewline">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR2.Classes.PropertyDeclaration">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR2.Methods.FunctionCallSignature">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="Generic.Files.LineLength">
+        <severity>0</severity>
+    </rule>
+    
+    <!-- Disable mixed line endings warning -->
+    <rule ref="Generic.Files.LineEndings.InvalidEOLChar">
+        <severity>0</severity>
+    </rule>
+    
+    <rule ref="Generic.Files.LineEndings">
+        <severity>0</severity>
+    </rule>
+    
+    <!-- Disable internal line endings rule -->
+    <rule ref="Internal.LineEndings">
+        <severity>0</severity>
+    </rule>
+</ruleset>

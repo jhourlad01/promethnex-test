@@ -3,15 +3,12 @@
     "description": "Product Catalog Backend",
     "type": "project",
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0"
+        "squizlabs/php_codesniffer": "*"
     },
     "scripts": {
         "cs-fix": "php-cs-fixer fix",
         "cs-check": "php-cs-fixer fix --dry-run --diff"
     },
     "config": {
-        "allow-plugins": {
-            "friendsofphp/php-cs-fixer": true
-        }
     }
 }

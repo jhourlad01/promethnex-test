@@ -1,4 +1,12 @@
-<?php require_once 'config.php'; ?>
+<?php
+
+require_once 'config.php';
+require_once 'models/Product.php';
+
+// Get products from database
+$productModel = new \App\Models\Product($pdo);
+$products = $productModel->all();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,18 +109,22 @@
 
             <!-- Products Grid -->
             <div class="row" id="productsGrid">
-                <!-- Product Card 1 -->
+                <?php foreach ($products as $product): ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="position-relative">
-                            <img src="assets/images/products/iphone-15-pro.jpg" class="card-img-top" alt="iPhone 15 Pro" style="height: 250px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: 1</span>
+                            <img src="assets/images/products/<?php echo strtolower(str_replace(' ', '-', $product['name'])) ?>.jpg" 
+                                 class="card-img-top" 
+                                 alt="<?php echo htmlspecialchars($product['name']) ?>" 
+                                 style="height: 250px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
+                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: <?php echo $product['id'] ?></span>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold">iPhone 15 Pro</h5>
-                            <p class="card-text text-muted flex-grow-1">Latest Apple smartphone with titanium design and A17 Pro chip</p>
+                            <h5 class="card-title fw-bold"><?php echo htmlspecialchars($product['name']) ?></h5>
+                            <p class="card-text text-muted flex-grow-1"><?php echo htmlspecialchars($product['description']) ?></p>
                             <div class="d-flex justify-content-between align-items-center mt-auto">
-                                <span class="h4 text-primary mb-0 fw-bold">$999.00</span>
+                                <span class="h4 text-primary mb-0 fw-bold">$<?php echo number_format($product['price'], 2) ?></span>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-outline-primary btn-sm">
                                         <i class="bi bi-pencil"></i>
@@ -125,131 +137,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Product Card 2 -->
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="position-relative">
-                            <img src="assets/images/products/macbook-air-m3.jpg" class="card-img-top" alt="MacBook Air M3" style="height: 250px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: 2</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold">MacBook Air M3</h5>
-                            <p class="card-text text-muted flex-grow-1">Ultra-thin laptop with M3 chip performance and all-day battery</p>
-                            <div class="d-flex justify-content-between align-items-center mt-auto">
-                                <span class="h4 text-primary mb-0 fw-bold">$1,299.00</span>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="position-relative">
-                            <img src="assets/images/products/samsung-galaxy-s24.jpg" class="card-img-top" alt="Samsung Galaxy S24" style="height: 250px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: 3</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold">Samsung Galaxy S24</h5>
-                            <p class="card-text text-muted flex-grow-1">AI-powered Android flagship smartphone with advanced camera system</p>
-                            <div class="d-flex justify-content-between align-items-center mt-auto">
-                                <span class="h4 text-primary mb-0 fw-bold">$799.99</span>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 4 -->
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="position-relative">
-                            <img src="assets/images/products/dell-xps-13.jpg" class="card-img-top" alt="Dell XPS 13" style="height: 250px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: 4</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold">Dell XPS 13</h5>
-                            <p class="card-text text-muted flex-grow-1">Premium Windows laptop with stunning InfinityEdge display</p>
-                            <div class="d-flex justify-content-between align-items-center mt-auto">
-                                <span class="h4 text-primary mb-0 fw-bold">$1,199.00</span>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 5 -->
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="position-relative">
-                            <img src="assets/images/products/ipad-pro-12-9.jpg" class="card-img-top" alt="iPad Pro 12.9" style="height: 250px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: 5</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold">iPad Pro 12.9"</h5>
-                            <p class="card-text text-muted flex-grow-1">Professional tablet with M2 chip and Apple Pencil support</p>
-                            <div class="d-flex justify-content-between align-items-center mt-auto">
-                                <span class="h4 text-primary mb-0 fw-bold">$1,099.00</span>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 6 -->
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="position-relative">
-                            <img src="assets/images/products/sony-wh-1000xm5.jpg" class="card-img-top" alt="Sony WH-1000XM5" style="height: 250px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: 6</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold">Sony WH-1000XM5</h5>
-                            <p class="card-text text-muted flex-grow-1">Industry-leading noise canceling wireless headphones</p>
-                            <div class="d-flex justify-content-between align-items-center mt-auto">
-                                <span class="h4 text-primary mb-0 fw-bold">$399.99</span>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
             <!-- Empty State -->
