@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS products (
 DELETE FROM products;
 
 -- Add image column if it doesn't exist
-ALTER TABLE products ADD COLUMN IF NOT EXISTS image VARCHAR(255);
 INSERT INTO products (id, name, price, description, image, created_at, updated_at) VALUES
 (1, 'iPhone 15 Pro', 999.00, 'Latest Apple smartphone with titanium design and A17 Pro chip', 'iphone-15-pro.jpg', NOW(), NOW()),
 (2, 'MacBook Air M3', 1299.00, 'Ultra-thin laptop with M3 chip performance and all-day battery', 'macbook-air-m3.jpg', NOW(), NOW()),

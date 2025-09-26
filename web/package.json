@@ -9,6 +9,7 @@
     "lint:php": "vendor\\bin\\phpcs --standard=config/phpcs.xml",
     "lint": "npm run lint:js && npm run lint:php",
     "seed": "php db/seeder.php",
+    "analyze": "node scripts/analyze.js",
     "prestart": "npm run lint && echo 'All checks passed!'",
     "start": "npm run prestart && concurrently \"npm run watch\" \"browser-sync start --config config/browser-sync.config.js\" \"php -S localhost:8001\""
   },
