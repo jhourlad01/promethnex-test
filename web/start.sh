@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Starting Product Catalog with Hot Reloading..."
+echo "Starting Promethex Store with Hot Reloading..."
 echo
 
 echo "1. Compiling SCSS..."

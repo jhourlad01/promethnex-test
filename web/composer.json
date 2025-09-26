@@ -1,6 +1,6 @@
 {
     "name": "product-catalog/backend",
-    "description": "Product Catalog Backend",
+    "description": "Promethex Store Backend",
     "type": "project",
     "require-dev": {
         "squizlabs/php_codesniffer": "*"

@@ -15,7 +15,7 @@ $products = $productModel->all();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Catalog - Home</title>
+    <title><?php echo APP_NAME; ?> - Home</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -27,7 +27,7 @@ $products = $productModel->all();
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
-                <i class="bi bi-shop me-2"></i>Product Catalog
+                <i class="bi bi-shop me-2"></i><?php echo APP_NAME; ?>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -35,11 +35,6 @@ $products = $productModel->all();
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="d-flex ms-auto">
-                    <button class="btn btn-outline-light" type="button" id="refreshProducts">
-                        <i class="bi bi-arrow-clockwise me-1"></i>Refresh
-                    </button>
-                </div>
             </div>
         </div>
     </nav>
@@ -49,7 +44,7 @@ $products = $productModel->all();
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h1 class="display-4 fw-bold text-white mb-3">Product Catalog</h1>
+                    <h1 class="display-4 fw-bold text-white mb-3"><?php echo APP_NAME; ?></h1>
                     <p class="lead text-white-50 mb-4">
                         Browse and manage your product inventory with our simple and intuitive catalog system.
                         Built with REST API and GraphQL support.
@@ -117,7 +112,6 @@ $products = $productModel->all();
                                  class="card-img-top" 
                                  alt="<?php echo htmlspecialchars($product['name']) ?>" 
                                  style="height: 250px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">ID: <?php echo $product['id'] ?></span>
                         </div>
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold"><?php echo htmlspecialchars($product['name']) ?></h5>
@@ -188,8 +182,13 @@ $products = $productModel->all();
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="productDescription" class="form-label">Description (Optional)</label>
-                            <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                            <label for="productDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productImage" class="form-label">Product Image</label>
+                            <input type="file" class="form-control" id="productImage" accept="image/*">
+                            <div class="form-text">Upload a product image (JPG, PNG, GIF)</div>
                         </div>
                     </form>
                 </div>
@@ -237,18 +236,19 @@ $products = $productModel->all();
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4 mt-5">
+    <footer class="bg-light border-top py-4 mt-5">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h5><i class="bi bi-shop me-2"></i>Product Catalog</h5>
-                    <p class="text-muted">Simple product management with REST API and GraphQL support.</p>
+                    <h6 class="mb-1 text-primary">
+                        <i class="bi bi-shop me-2"></i><?php echo APP_NAME; ?>
+                    </h6>
+                    <small class="text-muted">Modern product management system</small>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="text-muted mb-0">
-                        Built with Bootstrap 5, jQuery, and PHP<br>
-                        <small>&copy; 2024 Product Catalog. All rights reserved.</small>
-                    </p>
+                    <small class="text-muted">
+                        &copy; 2024 <?php echo APP_NAME; ?>. All rights reserved.
+                    </small>
                 </div>
             </div>
         </div>
@@ -256,6 +256,7 @@ $products = $productModel->all();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 

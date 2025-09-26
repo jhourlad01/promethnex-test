@@ -7,13 +7,11 @@ $(document).ready(function () {
 
   function initializeApp() {
     setupEventListeners();
+    setupFormValidation();
     loadProducts();
   }
 
   function setupEventListeners() {
-    $('#refreshProducts').on('click', function () {
-      loadProducts();
-    });
 
     $('#filterProducts').on('input', function () {
       searchProducts();
@@ -38,6 +36,74 @@ $(document).ready(function () {
     $('#clearFilters').on('click', function () {
       clearFilters();
     });
+  }
+
+  function setupFormValidation() {
+    const validation = new JustValidate('#addProductForm', {
+      errorFieldCssClass: 'is-invalid',
+      errorLabelCssClass: 'invalid-feedback',
+      successFieldCssClass: 'is-valid',
+    });
+
+    validation
+      .addField('#productName', [
+        {
+          rule: 'required',
+          errorMessage: 'Product name is required'
+        },
+        {
+          rule: 'minLength',
+          value: 3,
+          errorMessage: 'Product name must be at least 3 characters'
+        },
+        {
+          rule: 'maxLength',
+          value: 50,
+          errorMessage: 'Product name must be less than 50 characters'
+        }
+      ])
+      .addField('#productPrice', [
+        {
+          rule: 'required',
+          errorMessage: 'Price is required'
+        },
+        {
+          rule: 'minNumber',
+          value: 0.01,
+          errorMessage: 'Price must be at least $0.01'
+        },
+        {
+          rule: 'maxNumber',
+          value: 10000,
+          errorMessage: 'Price cannot exceed $10,000'
+        }
+      ])
+      .addField('#productDescription', [
+        {
+          rule: 'required',
+          errorMessage: 'Description is required'
+        },
+        {
+          rule: 'minLength',
+          value: 10,
+          errorMessage: 'Description must be at least 10 characters'
+        },
+        {
+          rule: 'maxLength',
+          value: 200,
+          errorMessage: 'Description must be less than 200 characters'
+        }
+      ])
+      .addField('#productImage', [
+        {
+          rule: 'required',
+          errorMessage: 'Product image is required'
+        }
+      ])
+      .onSuccess((event) => {
+        event.preventDefault();
+        saveProduct();
+      });
   }
 
   function loadProducts() {
@@ -122,8 +188,102 @@ $(document).ready(function () {
     $('.col-xl-3').show();
     hideNoResultsMessage();
   }
+  
 
   function saveProduct() {
-    // TODO: Implement product saving
+    const name = $('#productName').val().trim();
+    const price = parseFloat($('#productPrice').val());
+    const description = $('#productDescription').val().trim();
+    const imageFile = $('#productImage')[0].files[0];
+    
+    // Show loading state
+    const saveBtn = $('#saveProduct');
+    const originalText = saveBtn.html();
+    saveBtn.prop('disabled', true).html('<i class="bi bi-hourglass-split me-2"></i>Saving...');
+    
+    // Create FormData for file upload
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('description', description);
+    formData.append('image', imageFile);
+    
+    // Send request
+    $.ajax({
+      url: 'api/add-product.php',
+      method: 'POST',
+      processData: false,
+      contentType: false,
+      data: formData,
+      success: function(response) {
+        if (response.success) {
+          // Close modal
+          $('#addProductModal').modal('hide');
+          
+          // Clear form
+          $('#addProductForm')[0].reset();
+          
+          // Show success message
+          showSuccessMessage('Product added successfully!');
+          
+          // Reload products (in a real app, you'd add the new product to the DOM)
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        } else {
+          showErrorMessage(response.error || 'Failed to save product');
+        }
+      },
+      error: function(xhr) {
+        let errorMessage = 'Failed to save product';
+        try {
+          const response = JSON.parse(xhr.responseText);
+          errorMessage = response.error || errorMessage;
+        } catch (e) {
+          // Use default error message
+        }
+        showErrorMessage(errorMessage);
+      },
+      complete: function() {
+        // Restore button state
+        saveBtn.prop('disabled', false).html(originalText);
+      }
+    });
+  }
+  
+  function showSuccessMessage(message) {
+    // Create and show success alert
+    const alert = $(`
+      <div class="alert alert-success alert-dismissible fade show position-fixed" 
+           style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+        <i class="bi bi-check-circle me-2"></i>${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    `);
+    
+    $('body').append(alert);
+    
+    // Auto-dismiss after 3 seconds
+    setTimeout(() => {
+      alert.alert('close');
+    }, 3000);
+  }
+  
+  function showErrorMessage(message) {
+    // Create and show error alert
+    const alert = $(`
+      <div class="alert alert-danger alert-dismissible fade show position-fixed" 
+           style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+        <i class="bi bi-exclamation-triangle me-2"></i>${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    `);
+    
+    $('body').append(alert);
+    
+    // Auto-dismiss after 5 seconds
+    setTimeout(() => {
+      alert.alert('close');
+    }, 5000);
   }
 });

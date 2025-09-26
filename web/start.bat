@@ -1,5 +1,5 @@
 @echo off
-echo Starting Product Catalog with Hot Reloading...
+echo Starting Promethex Store with Hot Reloading...
 echo.
 
 echo 1. Compiling SCSS...
@@ -24,7 +24,7 @@ echo.
 
 echo 3. Starting development server with hot reloading...
 echo.
-echo Open: http://localhost:8000
+echo Open: http://localhost:8001
 echo Press Ctrl+C to stop the server
 echo.
 

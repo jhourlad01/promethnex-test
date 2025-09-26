@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Product Catalog">
-    <description>PHP CodeSniffer configuration for Product Catalog</description>
+    <description>PHP CodeSniffer configuration for Promethex Store</description>
     
     <!-- Files to check -->
     <file>../index.php</file>
