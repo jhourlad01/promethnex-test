@@ -12,7 +12,17 @@ if %errorlevel% neq 0 (
 echo SCSS compilation completed successfully!
 echo.
 
-echo 2. Starting development server with hot reloading...
+echo 2. Running code quality checks...
+call npm run prestart
+if %errorlevel% neq 0 (
+    echo ERROR: Code quality checks failed!
+    echo Fix the issues above before starting the server.
+    pause
+    exit /b 1
+)
+echo.
+
+echo 3. Starting development server with hot reloading...
 echo.
 echo Open: http://localhost:8000
 echo Press Ctrl+C to stop the server

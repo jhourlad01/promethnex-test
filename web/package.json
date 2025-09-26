@@ -5,11 +5,24 @@
   "scripts": {
     "watch": "sass assets/scss/styles.scss assets/css/style.css --watch",
     "build": "sass assets/scss/styles.scss assets/css/style.css --style=compressed",
-    "start": "concurrently \"npm run watch\" \"browser-sync start --config browser-sync.config.js\" \"php -S localhost:8001\""
+    "lint:js": "eslint assets/js/*.js --config config/.eslintrc.js",
+    "lint:js:fix": "eslint assets/js/*.js --config config/.eslintrc.js --fix",
+    "lint:php": "vendor\\bin\\php-cs-fixer fix --config=config/.php-cs-fixer.php --dry-run --diff",
+    "lint:php:fix": "vendor\\bin\\php-cs-fixer fix --config=config/.php-cs-fixer.php",
+    "format:js": "prettier --write assets/js/*.js --config config/.prettierrc",
+    "format": "npm run format:js && npm run lint:php:fix",
+    "lint": "npm run lint:js && npm run lint:php",
+    "prestart": "npm run lint && echo 'All checks passed!'",
+    "start": "npm run prestart && concurrently \"npm run watch\" \"browser-sync start --config config/browser-sync.config.js\" \"php -S localhost:8001\""
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",
     "concurrently": "^9.2.1",
+    "eslint": "^8.57.1",
+    "prettier": "^3.6.2",
     "sass": "^1.69.5"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2"
   }
 }
