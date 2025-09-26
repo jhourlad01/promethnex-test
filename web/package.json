@@ -12,6 +12,7 @@
     "format:js": "prettier --write assets/js/*.js --config config/.prettierrc",
     "format": "npm run format:js && npm run lint:php:fix",
     "lint": "npm run lint:js && npm run lint:php",
+    "seed": "php db/seeder.php",
     "prestart": "npm run lint && echo 'All checks passed!'",
     "start": "npm run prestart && concurrently \"npm run watch\" \"browser-sync start --config config/browser-sync.config.js\" \"php -S localhost:8001\""
   },

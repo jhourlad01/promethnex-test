@@ -101,7 +101,144 @@
 
             <!-- Products Grid -->
             <div class="row" id="productsGrid">
-                <!-- Products will be loaded here dynamically -->
+                <!-- Sample Product Cards -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">iPhone 15 Pro</h5>
+                            <p class="card-text text-muted">Latest Apple smartphone with titanium design</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h4 text-primary mb-0">$999.00</span>
+                                <small class="text-muted">ID: 1</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="btn-group w-100" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">MacBook Air M3</h5>
+                            <p class="card-text text-muted">Ultra-thin laptop with M3 chip performance</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h4 text-primary mb-0">$1,299.00</span>
+                                <small class="text-muted">ID: 2</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="btn-group w-100" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Samsung Galaxy S24</h5>
+                            <p class="card-text text-muted">AI-powered Android flagship smartphone</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h4 text-primary mb-0">$799.99</span>
+                                <small class="text-muted">ID: 3</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="btn-group w-100" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Dell XPS 13</h5>
+                            <p class="card-text text-muted">Premium Windows laptop with stunning display</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h4 text-primary mb-0">$1,199.00</span>
+                                <small class="text-muted">ID: 4</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="btn-group w-100" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">iPad Pro 12.9"</h5>
+                            <p class="card-text text-muted">Professional tablet with M2 chip and Apple Pencil support</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h4 text-primary mb-0">$1,099.00</span>
+                                <small class="text-muted">ID: 5</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="btn-group w-100" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Sony WH-1000XM5</h5>
+                            <p class="card-text text-muted">Industry-leading noise canceling wireless headphones</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h4 text-primary mb-0">$399.99</span>
+                                <small class="text-muted">ID: 6</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="btn-group w-100" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Empty State -->

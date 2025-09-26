@@ -1,59 +1,52 @@
 # Product Catalog
 
-Coding Assessment (Skills Test): Simple E-Commerce Site in PHP and GraphQL for Promethnex
+Coding Assessment: Simple E-Commerce Site in PHP and GraphQL
 
-## Development Setup
+## Quick Start
 
-### Quick Start
 ```bash
 # Windows
 start.bat
 
-# Linux/Mac
+# Linux/Mac  
 ./start.sh
 ```
 
-**The server will:**
-1. Compile SCSS
-2. Run code quality checks (linting)
-3. **Stop if any checks fail** - fix issues before starting
-4. Start the server with hot reloading
+**Server starts at `http://localhost:8000` with hot reloading**
 
-Opens your app at `http://localhost:8000` with hot reloading enabled.
+## Setup
 
-
-## Environment Setup
-
-1. Copy the example environment file:
+1. **Environment:**
 ```bash
 cp env.example .env
+# Edit .env with your database settings
 ```
 
-2. Edit `.env` with your configuration:
-- Database settings
-- API endpoints
-- Security keys
-
-## Development Commands
-
-### Linting & Formatting
+2. **Database:**
 ```bash
-# Lint JavaScript and PHP
+npm run seed
+# Creates products table and inserts sample data
+```
+
+## Commands
+
+```bash
+# Start development server
+npm run start
+
+# Seed database
+npm run seed
+
+# Lint code
 npm run lint
 
-# Format JavaScript with Prettier
-npm run format:js
-
-# Fix PHP code style
-npm run lint:php
-
-# Format everything
+# Format code
 npm run format
 ```
 
 ## Tech Stack
-- Frontend: HTML5, Bootstrap 5, jQuery, SCSS
-- Backend: PHP
-- Build Tools: Sass, BrowserSync, npm scripts
-- Environment: dotenv support
-- Code Quality: ESLint, Prettier, PHP CS Fixer
+- **Frontend:** HTML5, Bootstrap 5, jQuery, SCSS
+- **Backend:** PHP
+- **Database:** MySQL
+- **Build Tools:** Sass, BrowserSync
+- **Code Quality:** ESLint, Prettier, PHP CS Fixer
