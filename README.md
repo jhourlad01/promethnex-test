@@ -1,6 +1,6 @@
-# Product Catalog API
+# Product Catalog Frontend
 
-Coding Assessment: Simple Product Catalog API in PHP
+A modern product catalog web application with AI-powered visual analysis capabilities.
 
 ## Quick Start
 
@@ -130,48 +130,105 @@ npm run test-models
 ```
 
 ## Tech Stack
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap
 - **Backend:** PHP
 - **Database:** MySQL
 - **API:** REST + GraphQL
-- **Code Quality:** ESLint, PHP CodeSniffer
-- **AI Analysis:** Hugging Face Vision Models
-- **Visual Testing:** Playwright + Hugging Face Vision
+- **Code Quality:** ESLint, PHP CodeSniffer, Prettier
+- **AI Analysis:** ONNX Runtime + Transformers.js
+- **Visual Testing:** Playwright + AI Image Analysis
 
-## AI Analysis Configuration
+## AI Visual Analysis
+
+This project includes an advanced visual analysis system that automatically captures screenshots across multiple viewports and uses AI to analyze the UI.
+
+### Features
+- **Multi-viewport Screenshots**: Mobile, tablet, desktop, and large desktop
+- **AI-Powered Analysis**: Automated image captioning and UI analysis
+- **Interactive Reports**: HTML reports with viewport comparison
+- **Model Fallback System**: Automatic fallback to working models
+- **Offline Capable**: Models cached locally for offline analysis
 
 ### Model Usage
-This project uses models from Hugging Face Model Hub:
-- **blip-image-captioning-base**: BSD-3-Clause license (verified free)
-- **Xenova models**: License not specified in API (verify before commercial use)
-- No API keys required
-- No authentication needed
+This project uses ONNX-based models from Hugging Face Model Hub:
+- **Primary Model**: `Xenova/vit-gpt2-image-captioning` (fast, reliable)
+- **Fallback Models**: Multiple BLIP and ViT models for reliability
+- **License**: BSD-3-Clause for verified models, others require verification
+- **No API Keys**: Completely local inference using ONNX Runtime
 
 ### Model Configuration
 Configure model behavior and retry logic:
 
 ```bash
-# Delay between API calls (milliseconds)
-set API_DELAY_MS=2000
+# Delay between analysis calls (milliseconds)
+set API_DELAY_MS=1000
 
 # Maximum retry attempts for failed requests
-set MAX_RETRIES=3
+set MAX_RETRIES=2
 
 # Model to use for analysis
-set TRANSFORMERS_MODEL=blip-image-captioning-base
+set TRANSFORMERS_MODEL=Xenova/vit-gpt2-image-captioning
 ```
 
 ### Supported Models
-The following models are used for visual analysis:
+The following ONNX models are used for visual analysis:
 
-**Image Captioning Models:**
-- `blip-image-captioning-base` (BSD-3-Clause - verified free)
+**Primary Models:**
+- `Xenova/vit-gpt2-image-captioning` (Primary - fast and reliable)
+- `Xenova/blip-image-captioning-base` (Fallback - good accuracy)
+
+**Alternative Models:**
+- `nlpconnect/vit-gpt2-image-captioning` (Alternative ViT model)
 - `Salesforce/blip-image-captioning-base` (BSD-3-Clause - verified free)
-- `Xenova/vit-gpt2-image-captioning` (License not specified - verify before use)
-- `Xenova/blip-image-captioning-base` (License not specified - verify before use)
 
 ### Model Download Process
 1. **First Run**: Models download from Hugging Face (2-4GB total)
-2. **Caching**: Models stored locally in `~/.cache/huggingface/hub/`
-3. **Subsequent Runs**: Load from local cache (offline capable)
+2. **ONNX Runtime**: Models converted to ONNX format for optimal performance
+3. **Local Caching**: Models stored in system cache (`~/.cache/huggingface/hub/` on Unix, `%USERPROFILE%\.cache\huggingface\hub` on Windows)
+4. **Subsequent Runs**: Load from local cache (completely offline capable)
 
-**Note:** Some models have verified free licenses, others require verification. No API keys, subscriptions, or payments required for basic usage.
+**Note:** Models use ONNX Runtime for fast, local inference. No external API calls or authentication required.
+
+## Visual Analysis Workflow
+
+### 1. Test Model Setup
+```bash
+npm run test-models
+```
+This command:
+- Tests model download and initialization
+- Verifies ONNX Runtime compatibility
+- Pre-downloads models for faster analysis
+- Provides troubleshooting information
+
+### 2. Simple Screenshot Analysis
+```bash
+npm run analyze-simple
+```
+This command:
+- Captures screenshots across all viewports
+- Generates basic reports without AI analysis
+- Useful for visual regression testing
+- Faster execution (no AI processing)
+
+### 3. Full AI Analysis
+```bash
+npm run analyze
+```
+This command:
+- Captures screenshots across all viewports
+- Analyzes each screenshot with AI
+- Generates detailed HTML reports
+- Identifies UI issues and improvements
+- Creates interactive viewport comparisons
+
+### Analysis Output
+- **Screenshots**: Stored in `scripts/playwright/screenshots/`
+- **HTML Report**: `analysis-report.html` (interactive)
+- **JSON Data**: `analysis-report.json` (structured data)
+- **Metadata**: Viewport info, timestamps, file sizes
+
+### Supported Pages
+- **Home Page**: Main product catalog view
+- **Add Product Modal**: Modal dialog for adding products
+- **Responsive Design**: Analysis across mobile, tablet, desktop, large desktop
