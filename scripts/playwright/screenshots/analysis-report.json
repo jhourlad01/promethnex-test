@@ -1,0 +1,113 @@
+{
+  "generated": "2025-09-27T02:44:01.848Z",
+  "totalScreenshots": 4,
+  "aiAnalyzed": 4,
+  "totalIssues": 0,
+  "analyses": [
+    {
+      "filename": "home-desktop-1758941005041.png",
+      "timestamp": "2025-09-27T02:43:52.842Z",
+      "aiGenerated": true,
+      "description": "a collage of different pictures of different things",
+      "confidence": 0,
+      "issues": [],
+      "suggestions": [
+        "Analysis provided by Transformers.js local AI pipeline."
+      ]
+    },
+    {
+      "filename": "home-tablet-1758941001767.png",
+      "timestamp": "2025-09-27T02:43:55.851Z",
+      "aiGenerated": true,
+      "description": "a collage of photos showing different types of scissors",
+      "confidence": 0,
+      "issues": [],
+      "suggestions": [
+        "Analysis provided by Transformers.js local AI pipeline."
+      ]
+    },
+    {
+      "filename": "home-mobile-1758940996527.png",
+      "timestamp": "2025-09-27T02:43:58.870Z",
+      "aiGenerated": true,
+      "description": "a collage of photos of a variety of items",
+      "confidence": 0,
+      "issues": [],
+      "suggestions": [
+        "Analysis provided by Transformers.js local AI pipeline."
+      ]
+    },
+    {
+      "filename": "home-large-desktop-1758941010237.png",
+      "timestamp": "2025-09-27T02:44:01.848Z",
+      "aiGenerated": true,
+      "description": "a collage of different images of a person",
+      "confidence": 0,
+      "issues": [],
+      "suggestions": [
+        "Analysis provided by Transformers.js local AI pipeline."
+      ]
+    }
+  ],
+  "analysesByViewport": {
+    "desktop": [
+      {
+        "filename": "home-desktop-1758941005041.png",
+        "timestamp": "2025-09-27T02:43:52.842Z",
+        "aiGenerated": true,
+        "description": "a collage of different pictures of different things",
+        "confidence": 0,
+        "issues": [],
+        "suggestions": [
+          "Analysis provided by Transformers.js local AI pipeline."
+        ]
+      }
+    ],
+    "tablet": [
+      {
+        "filename": "home-tablet-1758941001767.png",
+        "timestamp": "2025-09-27T02:43:55.851Z",
+        "aiGenerated": true,
+        "description": "a collage of photos showing different types of scissors",
+        "confidence": 0,
+        "issues": [],
+        "suggestions": [
+          "Analysis provided by Transformers.js local AI pipeline."
+        ]
+      }
+    ],
+    "mobile": [
+      {
+        "filename": "home-mobile-1758940996527.png",
+        "timestamp": "2025-09-27T02:43:58.870Z",
+        "aiGenerated": true,
+        "description": "a collage of photos of a variety of items",
+        "confidence": 0,
+        "issues": [],
+        "suggestions": [
+          "Analysis provided by Transformers.js local AI pipeline."
+        ]
+      }
+    ],
+    "large": [
+      {
+        "filename": "home-large-desktop-1758941010237.png",
+        "timestamp": "2025-09-27T02:44:01.848Z",
+        "aiGenerated": true,
+        "description": "a collage of different images of a person",
+        "confidence": 0,
+        "issues": [],
+        "suggestions": [
+          "Analysis provided by Transformers.js local AI pipeline."
+        ]
+      }
+    ]
+  },
+  "availableViewports": [
+    "desktop",
+    "tablet",
+    "mobile",
+    "large"
+  ],
+  "issuesByType": {}
+}

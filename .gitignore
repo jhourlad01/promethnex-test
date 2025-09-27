@@ -80,3 +80,7 @@ composer.lock
 
 # Analysis screenshots
 web/scripts/playwright/screenshots/
+
+# AI Models (downloaded by transformers.js)
+# Note: Models are downloaded to system cache (~/.cache/huggingface/hub or %USERPROFILE%\.cache\huggingface\hub)
+# No local models folder to ignore

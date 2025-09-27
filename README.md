@@ -121,6 +121,12 @@ npm run lint
 
 # Visual analysis with AI (generates screenshots + analyzes)
 npm run analyze
+
+# Simple analysis without AI (screenshots only)
+npm run analyze-simple
+
+# Test model download (FREE models only)
+npm run test-models
 ```
 
 ## Tech Stack
@@ -133,16 +139,15 @@ npm run analyze
 
 ## AI Analysis Configuration
 
-### Hugging Face API Setup
-1. Get your API token from [Hugging Face Settings](https://huggingface.co/settings/tokens)
-2. Create a token with **Read** permissions
-3. Set the environment variable:
-   ```bash
-   set HF_API_KEY=your-token-here
-   ```
+### Model Usage
+This project uses models from Hugging Face Model Hub:
+- **blip-image-captioning-base**: BSD-3-Clause license (verified free)
+- **Xenova models**: License not specified in API (verify before commercial use)
+- No API keys required
+- No authentication needed
 
-### Rate Limiting Configuration
-Configure API call delays and retry behavior to avoid rate limiting:
+### Model Configuration
+Configure model behavior and retry logic:
 
 ```bash
 # Delay between API calls (milliseconds)
@@ -151,20 +156,22 @@ set API_DELAY_MS=2000
 # Maximum retry attempts for failed requests
 set MAX_RETRIES=3
 
-# Delay for rate limit retries (milliseconds)
-set RATE_LIMIT_DELAY_MS=5000
+# Model to use for analysis
+set TRANSFORMERS_MODEL=blip-image-captioning-base
 ```
 
-### Supported Vision Models
-The following models work well with the visual analysis:
+### Supported Models
+The following models are used for visual analysis:
 
 **Image Captioning Models:**
-- `nlpconnect/vit-gpt2-image-captioning` (recommended)
-- `Salesforce/blip-image-captioning-base`
-- `microsoft/git-base-coco` (may be deprecated)
+- `blip-image-captioning-base` (BSD-3-Clause - verified free)
+- `Salesforce/blip-image-captioning-base` (BSD-3-Clause - verified free)
+- `Xenova/vit-gpt2-image-captioning` (License not specified - verify before use)
+- `Xenova/blip-image-captioning-base` (License not specified - verify before use)
 
-**Visual Question Answering:**
-- `dandelin/vilt-b32-finetuned-vqa`
-- `Salesforce/blip-vqa-base`
+### Model Download Process
+1. **First Run**: Models download from Hugging Face (2-4GB total)
+2. **Caching**: Models stored locally in `~/.cache/huggingface/hub/`
+3. **Subsequent Runs**: Load from local cache (offline capable)
 
-**Note:** Model availability can change over time. If you get 404 errors, try a different model from the list above.
+**Note:** Some models have verified free licenses, others require verification. No API keys, subscriptions, or payments required for basic usage.

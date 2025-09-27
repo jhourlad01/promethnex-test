@@ -1,0 +1,34 @@
+{
+  "generated": "2025-09-27T02:25:04.764Z",
+  "total": 1,
+  "expectedTotal": 8,
+  "successRate": 13,
+  "screenshots": [
+    {
+      "filename": "home-mobile-1758939899093.png",
+      "page": "home",
+      "viewport": {
+        "name": "mobile",
+        "width": 375,
+        "height": 667
+      },
+      "timestamp": "2025-09-27T02:24:59.093Z",
+      "size": 2398974,
+      "sizeKB": 2343
+    }
+  ],
+  "summary": {
+    "totalSizeKB": 2343,
+    "averageSizeKB": 2343,
+    "pagesCaptured": [
+      "home"
+    ],
+    "viewportsCaptured": [
+      {
+        "name": "mobile",
+        "width": 375,
+        "height": 667
+      }
+    ]
+  }
+}

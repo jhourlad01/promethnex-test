@@ -1,0 +1,96 @@
+{
+  "generated": "2025-09-27T02:43:51.783Z",
+  "total": 8,
+  "expectedTotal": 8,
+  "successRate": 100,
+  "screenshots": [
+    {
+      "filename": "home-mobile-1758940996527.png",
+      "page": "home",
+      "viewport": {
+        "name": "mobile",
+        "width": 375,
+        "height": 667
+      },
+      "timestamp": "2025-09-27T02:43:16.527Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\home-mobile-1758940996527.png"
+    },
+    {
+      "filename": "home-tablet-1758941001767.png",
+      "page": "home",
+      "viewport": {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "timestamp": "2025-09-27T02:43:21.767Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\home-tablet-1758941001767.png"
+    },
+    {
+      "filename": "home-desktop-1758941005041.png",
+      "page": "home",
+      "viewport": {
+        "name": "desktop",
+        "width": 1920,
+        "height": 1080
+      },
+      "timestamp": "2025-09-27T02:43:25.041Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\home-desktop-1758941005041.png"
+    },
+    {
+      "filename": "home-large-desktop-1758941010237.png",
+      "page": "home",
+      "viewport": {
+        "name": "large-desktop",
+        "width": 2560,
+        "height": 1440
+      },
+      "timestamp": "2025-09-27T02:43:30.237Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\home-large-desktop-1758941010237.png"
+    },
+    {
+      "filename": "add-product-modal-mobile-1758941015030.png",
+      "page": "add-product-modal",
+      "viewport": {
+        "name": "mobile",
+        "width": 375,
+        "height": 667
+      },
+      "timestamp": "2025-09-27T02:43:35.030Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\add-product-modal-mobile-1758941015030.png"
+    },
+    {
+      "filename": "add-product-modal-tablet-1758941021023.png",
+      "page": "add-product-modal",
+      "viewport": {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "timestamp": "2025-09-27T02:43:41.023Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\add-product-modal-tablet-1758941021023.png"
+    },
+    {
+      "filename": "add-product-modal-desktop-1758941025055.png",
+      "page": "add-product-modal",
+      "viewport": {
+        "name": "desktop",
+        "width": 1920,
+        "height": 1080
+      },
+      "timestamp": "2025-09-27T02:43:45.055Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\add-product-modal-desktop-1758941025055.png"
+    },
+    {
+      "filename": "add-product-modal-large-desktop-1758941031072.png",
+      "page": "add-product-modal",
+      "viewport": {
+        "name": "large-desktop",
+        "width": 2560,
+        "height": 1440
+      },
+      "timestamp": "2025-09-27T02:43:51.072Z",
+      "path": "C:\\xampp\\htdocs\\promethex\\test\\scripts\\playwright\\screenshots\\add-product-modal-large-desktop-1758941031072.png"
+    }
+  ]
+}
