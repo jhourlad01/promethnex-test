@@ -14,7 +14,9 @@ const { callTransformersPipeline, testTransformersPipeline, preDownloadModels } 
 require('dotenv').config();
 
 // Configuration
-const BASE_URL = 'http://localhost:8001';
+const SERVER_HOST = process.env.SERVER_HOST || 'localhost';
+const SERVER_PORT = process.env.SERVER_PORT || '8001';
+const BASE_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 const SCREENSHOTS_DIR = path.join(__dirname, 'screenshots');
 const VIEWPORTS = [
     { name: 'mobile', width: 375, height: 667 },
