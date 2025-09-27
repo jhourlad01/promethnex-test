@@ -28,6 +28,27 @@ npm run seed
 # Creates products table and inserts sample data
 ```
 
+## Project Structure
+
+```
+├── api/                    # API endpoints
+│   ├── products.php       # REST API for products
+│   ├── add-product.php    # Add product endpoint
+│   └── graphql.php        # GraphQL endpoint
+├── assets/                # Frontend assets
+│   ├── css/              # Stylesheets
+│   ├── js/               # JavaScript files
+│   ├── images/           # Product images
+│   └── scss/             # SCSS source files
+├── scripts/              # Automation scripts
+│   └── playwright/       # Visual analysis system
+├── models/               # PHP data models
+├── config/               # Configuration files
+├── db/                   # Database files
+├── index.php             # Main entry point
+└── package.json          # Node.js dependencies
+```
+
 ## API Endpoints
 
 ### REST API
